@@ -1,13 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+Project uses **eslint & stylelint** prettiers. For working properly VSCode should be configured for **esling & stylelint** settings at settings.json:
 
 ```bash
-npm run dev
-# or
-yarn dev
+{
+  "files.associations": {
+    "*.jsx": "javascriptreact"
+  },
+  "files.eol": "\n",
+  "scss.validate": false,
+  "css.validate": false,
+  "less.validate": false,
+  "stylelint.validate": ["css", "scss"],
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[json]": {
+      "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+"javascript.updateImportsOnFileMove.enabled": "always"
+}
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
