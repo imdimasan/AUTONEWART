@@ -1,7 +1,8 @@
+import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 
-const Contacts = () => {
+const Contacts: NextPage = () => {
   return (
     <>
       <Head>

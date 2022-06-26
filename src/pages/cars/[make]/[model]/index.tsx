@@ -3,8 +3,9 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { Breadcrumbs, Typography } from "@mui/material";
 import Link from "next/link";
+import { NextPage } from "next";
 
-const Models = () => {
+const Models: NextPage = () => {
   const { query } = useRouter();
   const carMake = query.make?.toString().toUpperCase();
   const carModel = query.model?.toString().toUpperCase();
