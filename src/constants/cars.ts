@@ -860,7 +860,7 @@ export const cars = [
       "Tipo",
       "Ulysse",
       "Uno",
-      "X1/9",
+      "X-9",
     ],
   },
   {
