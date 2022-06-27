@@ -1,20 +1,23 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import { Breadcrumbs, Typography } from "@mui/material";
 import Link from "next/link";
 import { cars } from "constants/cars";
 import { NextPage } from "next";
+import { HeadMeta } from "components";
 
 const Cars: NextPage = () => {
-  const { query } = useRouter();
-  const carMake = query.make?.toString().toUpperCase();
+  const router = useRouter();
+  const carMake = router.query.make?.toString().toUpperCase();
 
   return (
     <>
-      <Head>
-        <title>{carMake} car manufacturer</title>
-      </Head>
+      <HeadMeta
+        title={`${carMake} car manufacturer`}
+        description={`${carMake} repairs and services`}
+        keywords={`${carMake}`}
+        url={router.asPath}
+      />
 
       <Breadcrumbs aria-label="breadcrumb">
         <Link href="/">
@@ -27,7 +30,7 @@ const Cars: NextPage = () => {
 
       <ul>
         {cars
-          .filter((cars) => cars.make === query.make)
+          .filter((cars) => cars.make === router.query.make)
           .map((car) =>
             car.models.map((model, index) => (
               <li key={index}>
