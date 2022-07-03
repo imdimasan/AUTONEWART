@@ -7,21 +7,20 @@ import { HeadMeta } from "components";
 
 const Models: NextPage = () => {
   const router = useRouter();
-  const carMake = router.query.make?.toString().toUpperCase();
-  const carModel = router.query.model?.toString().toUpperCase();
+  const carMake = router.query.make;
+  const carModel = router.query.model;
 
   return (
     <>
       <HeadMeta
-        title={`${carMake} ${carModel} car manufacturer`}
+        title={`Удаление катализатора в ${carMake} ${carModel} в Минске | AutoNewArt`}
         description={`${carMake} ${carModel} repairs and services`}
         keywords={`${carMake}, ${carModel}`}
-        url={router.asPath}
       />
 
       <Breadcrumbs aria-label="breadcrumb">
         <Link href="/">HOME</Link>
-        <Link href={`/cars/${router.query.make}`}>
+        <Link href={`/catalytic/${carMake}`}>
           <a>{carMake}</a>
         </Link>
         <Typography color="text.primary">{carModel}</Typography>

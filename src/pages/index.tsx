@@ -3,34 +3,31 @@ import React from "react";
 import Link from "next/link";
 import { cars } from "constants/cars";
 import { HeadMeta } from "components";
-import { useRouter } from "next/router";
+import classes from "./HomePage.module.scss";
 
 const Home: NextPage = () => {
-  const router = useRouter();
-
   return (
     <>
       <HeadMeta
         title="Home Page"
         description="App starts from this page"
         keywords="home, homepage"
-        url={router.asPath}
       />
 
-      <ul>
+      <ul className={classes.make}>
         {cars
           .sort((a, b) => a.make.localeCompare(b.make))
           .map((car, index) => (
             <li key={index}>
-              <Link href={`/cars/${car.make}`}>
+              <Link href={`/catalytic/${car.make}`}>
                 <a>{car.make}</a>
               </Link>
 
               {car.models && (
-                <ul>
+                <ul className={classes.models}>
                   {car.models.map((el, index) => (
                     <li key={index}>
-                      <Link href={`/cars/${car.make}/${el}`}>
+                      <Link href={`/catalytic/${car.make}/${el}`}>
                         <a>{el}</a>
                       </Link>
                     </li>
