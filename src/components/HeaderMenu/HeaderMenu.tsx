@@ -21,11 +21,16 @@ const HeaderMenu = ({ openMenu, setOpenMenu, menuBody }: IHeaderMenu) => {
       disableSwipeToOpen
       PaperProps={{
         sx: {
+          minHeight: "calc(100% - 105px)",
+          maxHeight: "calc(100% - 105px)",
           padding: "5px 0 20px",
           background: COLOR.BLACK,
           color: COLOR.WHITE,
           gap: "10px",
           borderRadius: deviceMobile ? "10px" : "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
         },
       }}
     >
