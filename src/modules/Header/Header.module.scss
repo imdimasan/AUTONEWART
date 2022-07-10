@@ -1,4 +1,5 @@
 @import "styles/colors.scss";
+@import "styles/media.scss";
 
 .wrapper {
   display: flex;
@@ -8,21 +9,16 @@
   justify-content: center;
   margin-bottom: 20px;
   padding-bottom: 10px;
+  overflow: hidden;
   color: #fff;
   background: $secondary;
-
-  .bottomMenu {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    width: 100%;
-  }
 
   .topMenu {
     display: flex;
     gap: 20%;
     justify-content: center;
     width: 100%;
+    min-height: 100px;
     padding: 10px 0;
     background: $black;
 
@@ -55,16 +51,49 @@
       }
     }
   }
-}
 
-.closeButton {
-  text-align: center;
-}
+  .bottomMenu {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
 
-.drawerMenu {
-  display: grid;
-  grid-template-columns: repeat(4, 150px);
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
+    @include tablet {
+      justify-content: flex-start;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      li {
+        width: 38%;
+        max-width: 125px;
+
+        button {
+          max-width: 100%;
+          padding: 5px;
+          font-size: 12px;
+        }
+
+        &:first-child {
+          margin-left: 10px;
+        }
+
+        &:last-child {
+          margin-right: 10px;
+        }
+      }
+    }
+    @include mobile {
+      li {
+        button {
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
 }

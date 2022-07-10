@@ -1,19 +1,18 @@
-import logo from "../../../public/logo.png";
-import { Button, Drawer, IconButton } from "@mui/material";
-import React, { useState } from "react";
-import classes from "./Header.module.scss";
-import Tuning from "assets/icons/exhaust-tuning.svg";
-import Repair from "assets/icons/exhaust-repair.svg";
-import Catalytic from "assets/icons/exhaust-catalytic.svg";
-import Dpf from "assets/icons/exhaust-dpf.svg";
+import { Button } from "@mui/material";
 import Repairing from "assets/icons/car-repair.svg";
 import Service from "assets/icons/car-service.svg";
+import Catalytic from "assets/icons/exhaust-catalytic.svg";
+import Dpf from "assets/icons/exhaust-dpf.svg";
+import Repair from "assets/icons/exhaust-repair.svg";
+import Tuning from "assets/icons/exhaust-tuning.svg";
 import Phone from "assets/icons/smartphone-icon.svg";
-import Close from "assets/icons/close.svg";
-import Link from "next/link";
+import { HeaderMenu } from "components";
 import Image from "next/image";
-import { contactButtonStyles, drawerButtonStyles, menuButtonStyles } from "./styles";
-import { MENU_TUNING } from "constants/menus";
+import Link from "next/link";
+import { useState } from "react";
+import logo from "../../../public/logo.png";
+import classes from "./Header.module.scss";
+import { contactButtonStyles, menuButtonStyles } from "./styles";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -145,69 +144,7 @@ const Header = () => {
         </menu>
       </div>
 
-      <Drawer
-        anchor="bottom"
-        open={openMenu}
-        onClose={() => setOpenMenu(false)}
-        PaperProps={{
-          sx: {
-            padding: "20px",
-            background: "#000",
-            color: "#fff",
-            gap: "10px",
-          },
-        }}
-      >
-        <div className={classes.closeButton}>
-          <IconButton onClick={() => setOpenMenu(false)}>
-            <Close fill="#fff" width={20} height={20} />
-          </IconButton>
-        </div>
-        <div className={classes.drawerMenu}>
-          {menuBody === "tuning" && (
-            <>
-              {MENU_TUNING.map((el, index) => (
-                <Link key={index} href={el.url}>
-                  <Button
-                    href={el.url}
-                    onClick={() => setOpenMenu(false)}
-                    variant="contained"
-                    sx={drawerButtonStyles}
-                  >
-                    <el.icon width={60} height={60} />
-                    {el.title}
-                  </Button>
-                </Link>
-              ))}
-            </>
-          )}
-          {menuBody === "repair" && (
-            <>
-              <h1>Repair</h1>
-            </>
-          )}
-          {menuBody === "catalytic" && (
-            <>
-              <h1>Catalytic</h1>
-            </>
-          )}
-          {menuBody === "dpf" && (
-            <>
-              <h1>DPF</h1>
-            </>
-          )}
-          {menuBody === "service" && (
-            <>
-              <h1>Service</h1>
-            </>
-          )}
-          {menuBody === "repairing" && (
-            <>
-              <h1>Repairing</h1>
-            </>
-          )}
-        </div>
-      </Drawer>
+      <HeaderMenu openMenu={openMenu} setOpenMenu={setOpenMenu} menuBody={menuBody} />
     </>
   );
 };

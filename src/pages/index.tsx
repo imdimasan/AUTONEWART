@@ -1,9 +1,5 @@
-import type { NextPage } from "next";
-import React from "react";
-import Link from "next/link";
-import { cars } from "constants/cars";
 import { HeadMeta } from "components";
-import classes from "./HomePage.module.scss";
+import { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
@@ -12,31 +8,9 @@ const Home: NextPage = () => {
         title="Home Page"
         description="App starts from this page"
         keywords="home, homepage"
+        url=""
       />
-
-      <ul className={classes.make}>
-        {cars
-          .sort((a, b) => a.make.localeCompare(b.make))
-          .map((car, index) => (
-            <li key={index}>
-              <Link href={`/catalytic/${car.make}`}>
-                <a>{car.make}</a>
-              </Link>
-
-              {car.models && (
-                <ul className={classes.models}>
-                  {car.models.map((el, index) => (
-                    <li key={index}>
-                      <Link href={`/catalytic/${car.make}/${el}`}>
-                        <a>{el}</a>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-      </ul>
+      <h1>Home Page AUTONEWART</h1>
     </>
   );
 };
