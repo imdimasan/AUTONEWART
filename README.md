@@ -31,6 +31,14 @@ Project uses **eslint & stylelint** prettiers. For working properly VSCode shoul
 }
 ```
 
+## Enviroment Variables
+Project uses **ENV variables*. Add necessary ENV after cloning:
+```
+REACT_APP_API_LIVESITE = Any site name
+REACT_APP_API_LOGO = http://site.name/logo.png
+REACT_APP_API_URL = http://site.name
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
