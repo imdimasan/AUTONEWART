@@ -1,0 +1,99 @@
+@import "styles/colors.scss";
+@import "styles/media.scss";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  overflow: hidden;
+  color: #fff;
+  background: $secondary;
+
+  .topMenu {
+    display: flex;
+    gap: 20%;
+    justify-content: center;
+    width: 100%;
+    min-height: 100px;
+    padding: 10px 0;
+    background: $black;
+
+    .contacts {
+      display: flex;
+      gap: 5px;
+      padding: 10px 0;
+    }
+
+    .logo {
+      width: 150px;
+      padding: 10px 0;
+      cursor: pointer;
+    }
+
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      span {
+        font-size: 18px;
+        line-height: 1;
+        text-transform: none;
+
+        &:first-child {
+          color: $tretiary;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .bottomMenu {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+
+    @include tablet {
+      justify-content: flex-start;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      li {
+        width: 38%;
+        max-width: 125px;
+
+        button {
+          max-width: 100%;
+          padding: 5px;
+          font-size: 12px;
+        }
+
+        &:first-child {
+          margin-left: 10px;
+        }
+
+        &:last-child {
+          margin-right: 10px;
+        }
+      }
+    }
+    @include mobile {
+      li {
+        button {
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+}

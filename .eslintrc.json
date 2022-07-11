@@ -27,10 +27,16 @@
         "@typescript-eslint",
         "prettier"
     ],
+    "settings": {
+        "react":{
+            "version": "detect"
+        }
+    },
     "rules": {
         "@typescript-eslint/ban-types": "off",
         "import/no-unresolved": "off",
         "import/no-named-as-default": "off",
+        "react/react-in-jsx-scope": "off",
         "prettier/prettier":[
             "error",
             {"endOfLine": "auto"}

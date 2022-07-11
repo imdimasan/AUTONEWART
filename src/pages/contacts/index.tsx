@@ -1,12 +1,15 @@
-import Head from "next/head";
-import React from "react";
+import { HeadMeta } from "components";
+import { NextPage } from "next";
 
-const Contacts = () => {
+const Contacts: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>Contact page</title>
-      </Head>
+      <HeadMeta
+        title="Contact Page"
+        description="It's contact page"
+        keywords="contact, contacts"
+        url="/contacts"
+      />
 
       <h1>Contacts page</h1>
     </>

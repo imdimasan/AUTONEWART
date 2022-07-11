@@ -1,17 +1,16 @@
-import "../styles/globals.scss";
+import { Footer, Header } from "modules";
 import type { AppProps } from "next/app";
-import React from "react";
+import "../styles/globals.scss";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <h1>Header</h1>
-
+      <Header />
       <main>
         <Component {...pageProps} />
       </main>
 
-      <h1>Footer</h1>
+      <Footer />
     </>
   );
 };
