@@ -1,0 +1,78 @@
+@import "styles/media.scss";
+@import "styles/colors.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  margin: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  margin: auto;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $primary;
+  }
+}
+
+menu {
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  font-size: 1.9rem;
+  text-align: center;
+  @include mobile {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 1.3rem;
+  text-align: center;
+  @include mobile {
+    font-size: 1.3rem;
+  }
+}
