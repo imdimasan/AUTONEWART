@@ -1,0 +1,36 @@
+@import "styles/media.scss";
+@import "styles/colors.scss";
+
+.closeButton {
+  text-align: center;
+}
+
+.swipeButton {
+  display: flex;
+  width: 25%;
+  min-height: 3px;
+  margin: 10px auto;
+  background: $accent;
+  border-radius: 8px;
+}
+
+.drawerMenu {
+  display: grid;
+  grid-template-columns: repeat(4, 150px);
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+
+  @include tablet {
+    grid-template-columns: repeat(3, 150px);
+  }
+  @include mobile {
+    grid-template-columns: repeat(2, 150px);
+    gap: 5px;
+
+    a {
+      font-size: 12px;
+    }
+  }
+}

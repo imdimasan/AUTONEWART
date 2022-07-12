@@ -1,36 +1,46 @@
 @import "styles/media.scss";
-@import "styles/colors.scss";
 
-.closeButton {
-  text-align: center;
-}
-
-.swipeButton {
+.headerMenu {
   display: flex;
-  width: 25%;
-  min-height: 3px;
-  margin: 10px auto;
-  background: $accent;
-  border-radius: 8px;
-}
-
-.drawerMenu {
-  display: grid;
-  grid-template-columns: repeat(4, 150px);
   gap: 10px;
-  align-items: center;
   justify-content: center;
-  margin: auto;
+  width: 100%;
 
   @include tablet {
-    grid-template-columns: repeat(3, 150px);
+    justify-content: flex-start;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    li {
+      width: 38%;
+      max-width: 125px;
+
+      button {
+        max-width: 100%;
+        padding: 5px;
+        font-size: 12px;
+      }
+
+      &:first-child {
+        margin-left: 10px;
+      }
+
+      &:last-child {
+        margin-right: 10px;
+      }
+    }
   }
   @include mobile {
-    grid-template-columns: repeat(2, 150px);
-    gap: 5px;
-
-    a {
-      font-size: 12px;
+    li {
+      button {
+        svg {
+          width: 40px;
+          height: 40px;
+        }
+      }
     }
   }
 }

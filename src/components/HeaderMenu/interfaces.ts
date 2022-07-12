@@ -1,5 +1,3 @@
 export interface IHeaderMenu {
-  openMenu: boolean;
-  setOpenMenu: (value: boolean) => void;
-  menuBody: string | null;
+  openMenu: (value: string) => void;
 }

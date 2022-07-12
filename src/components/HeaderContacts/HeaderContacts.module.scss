@@ -1,0 +1,68 @@
+@import "styles/colors.scss";
+@import "styles/media.scss";
+
+.headerContacts {
+  display: flex;
+  gap: 20%;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100px;
+  padding: 10px 0;
+  background: $black;
+
+  .logo {
+    width: 150px;
+    padding: 10px 0;
+    cursor: pointer;
+  }
+
+  .contacts {
+    display: flex;
+    gap: 5px;
+    padding: 10px 0;
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    span {
+      font-size: 18px;
+      line-height: 1;
+      text-transform: none;
+
+      &:first-child {
+        color: $tretiary;
+        font-size: 12px;
+      }
+    }
+
+    @include desktop {
+      span {
+        font-size: 15px;
+      }
+    }
+  }
+
+  @include desktop {
+    .logo {
+      width: 120px;
+    }
+  }
+
+  @include tablet {
+    justify-content: space-between;
+    min-height: 65px;
+    padding: 0 10px;
+
+    .logo {
+      width: 90px;
+    }
+
+    .contacts {
+      padding: 0;
+    }
+  }
+}
