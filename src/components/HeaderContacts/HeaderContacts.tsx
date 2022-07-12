@@ -2,9 +2,10 @@ import { Button } from "@mui/material";
 import Phone from "assets/icons/smartphone-icon.svg";
 import Logo from "components/Logo";
 import classes from "./HeaderContacts.module.scss";
+import { IHeaderContacts } from "./interfaces";
 import { contactButtonStyles, mobileButtonStyles } from "./styles";
 
-const HeaderContacts = () => {
+const HeaderContacts = ({ openMenu }: IHeaderContacts) => {
   return (
     <div className={classes.headerContacts}>
       <div className={classes.logo}>
@@ -42,7 +43,11 @@ const HeaderContacts = () => {
             <span>ул. Куприянова, 2</span>
           </div>
         </Button>
-        <Button sx={mobileButtonStyles} startIcon={<Phone height={35} width={35} />}></Button>
+        <Button
+          sx={mobileButtonStyles}
+          startIcon={<Phone height={35} width={35} />}
+          onClick={() => openMenu("contacts")}
+        ></Button>
       </div>
     </div>
   );
