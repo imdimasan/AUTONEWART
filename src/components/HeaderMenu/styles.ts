@@ -1,19 +1,15 @@
 import { COLOR } from "constants/colors";
 
-export const drawerButtonStyles = {
+export const menuButtonStyles = {
   flexDirection: "column",
   background: "#5c5c5c",
   border: "none",
   color: COLOR.ACCENT,
   textTransform: "none",
-  textAlign: "center",
-  padding: "10px",
+  padding: "5px 10px",
   fontWeight: "400",
-  lineHeight: "1",
   width: "150px",
-  minHeight: "150px",
-  height: "-webkit-fill-available",
-  gap: "10px",
+  gap: "5px",
   svg: {
     fill: COLOR.TRETIARY,
     transition: "250ms",
