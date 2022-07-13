@@ -61,6 +61,23 @@ export const drawerContactsButtonStyles = {
     },
   },
 };
+export const drawerFormButtonStyles = {
+  background: COLOR.PRIMARY_RED,
+  border: "none",
+  color: COLOR.WHITE,
+  textTransform: "none",
+  textAlign: "center",
+  padding: "10px",
+  fontWeight: "400",
+  lineHeight: "1",
+  minHeight: "40px",
+  gap: "10px",
+  "&:hover": {
+    color: COLOR.WHITE,
+    background: COLOR.TRETIARY,
+    border: "none",
+  },
+};
 
 export const drawerPaperProps = {
   minHeight: deviceMobile ? "calc(100% - 70px)" : "calc(100% - 105px)",

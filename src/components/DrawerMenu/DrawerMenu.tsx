@@ -4,6 +4,7 @@ import Viber from "assets/icons-colored/viber.svg";
 import YandexMaps from "assets/icons-colored/yandex-maps.svg";
 import Close from "assets/icons/close.svg";
 import Calling from "assets/icons/smartphone-calling-icon.svg";
+import Chat from "assets/icons/smartphone-chat.svg";
 import { BRAKEPOINTS } from "constants/brakepoints";
 import { COLOR } from "constants/colors";
 import { MENUS } from "constants/menus";
@@ -14,6 +15,7 @@ import classes from "./DrawerMenu.module.scss";
 import { IDrawerMenu } from "./interfaces";
 import {
   drawerContactsButtonStyles,
+  drawerFormButtonStyles,
   drawerMenuButtonStyles,
   drawerPaperProps,
   inputLabelStyles,
@@ -221,6 +223,12 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
         )}
         {menuBody === "callback" && (
           <>
+            <Chat
+              fill={COLOR.PRIMARY_RED}
+              width={80}
+              height={80}
+              style={{ marginBottom: "20px" }}
+            />
             <TextField
               fullWidth
               label="Ваше имя"
@@ -276,7 +284,7 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
               fullWidth
               onClick={handleSubmit}
               variant="contained"
-              sx={drawerContactsButtonStyles}
+              sx={drawerFormButtonStyles}
             >
               Отправить сообщение
             </Button>

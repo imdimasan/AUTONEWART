@@ -44,3 +44,12 @@
   width: 90%;
   margin: auto;
 }
+
+.formHeading {
+  font-size: 18px;
+
+  span {
+    color: $primaryRed;
+    font-weight: 600;
+  }
+}
