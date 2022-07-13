@@ -1,7 +1,7 @@
 import { HeadMeta } from "components";
 import { NextPage } from "next";
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
   return (
     <>
       <HeadMeta
@@ -15,4 +15,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default HomePage;

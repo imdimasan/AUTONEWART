@@ -6,11 +6,11 @@
     list-style: none;
 
     a {
-      color: $tretiary;
+      color: $primaryRed;
     }
 
     &:nth-child(even) {
-      background-color: $accent;
+      background-color: $lightGray;
     }
 
     &:nth-child(odd) {
@@ -28,7 +28,7 @@
       background-color: transparent;
 
       a {
-        color: $primary;
+        color: $darkGray;
       }
     }
   }

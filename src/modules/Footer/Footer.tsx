@@ -1,5 +1,11 @@
+import classes from "./Footer.module.scss";
+
 const Footer = () => {
-  return <h1>Footer</h1>;
+  return (
+    <footer className={classes.wrapper}>
+      <h1>Footer</h1>
+    </footer>
+  );
 };
 
 export default Footer;

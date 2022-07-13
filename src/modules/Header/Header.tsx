@@ -18,10 +18,10 @@ const Header = () => {
 
   return (
     <>
-      <div className={classes.wrapper}>
+      <header className={classes.wrapper}>
         <HeaderContacts openMenu={toggleDrawer} />
         <HeaderMenu openMenu={toggleDrawer} />
-      </div>
+      </header>
       <DrawerMenu openMenu={openMenu} setOpenMenu={setOpenMenu} menuBody={menuBody} />
     </>
   );

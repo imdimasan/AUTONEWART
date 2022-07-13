@@ -43,6 +43,7 @@ export const drawerContactsButtonStyles = {
   padding: "10px",
   fontWeight: "400",
   lineHeight: "1",
+  minHeight: "50px",
   gap: "10px",
   svg: {
     fill: COLOR.TRETIARY,
@@ -72,5 +73,44 @@ export const drawerPaperProps = {
   borderTopRightRadius: deviceMobile ? "18px" : "none",
   "&::-webkit-scrollbar": {
     display: "none",
+  },
+};
+
+export const inputLabelStyles = {
+  top: "-8px",
+  color: COLOR.WHITE_GRAY,
+  fontSize: "15px",
+  "&.Mui-focused": {
+    color: COLOR.WHITE,
+    transform: "translate(10px, 0) scale(0.75)",
+  },
+  "&.MuiInputLabel-shrink": {
+    color: COLOR.WHITE,
+    background: COLOR.LIGHT_GRAY,
+    borderRadius: "10px",
+    lineHeight: "1",
+    padding: "4px 12px",
+    transform: "translate(10px, 0) scale(0.75)",
+  },
+};
+
+export const inputStyles = {
+  background: COLOR.LIGHT_GRAY,
+  color: COLOR.WHITE,
+  input: {
+    lineHeight: "1",
+    padding: "9px 14px",
+    borderColor: COLOR.WHITE_GRAY,
+  },
+  "&.MuiOutlinedInput-root": {
+    fieldset: {
+      top: "-6px",
+    },
+    "&.Mui-focused": {
+      fieldset: {
+        borderColor: COLOR.WHITE_GRAY,
+        top: "-6px",
+      },
+    },
   },
 };

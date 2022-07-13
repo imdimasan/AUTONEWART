@@ -29,8 +29,14 @@ body {
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $primary;
+    background: $darkGray;
   }
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 menu {

@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
-import Phone from "assets/icons/smartphone-icon.svg";
+import Call from "assets/icons/smartphone-call.svg";
+import Chat from "assets/icons/smartphone-chat.svg";
 import Logo from "components/Logo";
 import classes from "./HeaderContacts.module.scss";
 import { IHeaderContacts } from "./interfaces";
@@ -15,7 +16,7 @@ const HeaderContacts = ({ openMenu }: IHeaderContacts) => {
         <Button
           href="tel:+375 (29) 123-39-23"
           sx={contactButtonStyles}
-          startIcon={<Phone height={35} width={35} />}
+          startIcon={<Call height={35} width={35} />}
         >
           <div className={classes.contact}>
             <span>Позвоните нам:</span>
@@ -25,7 +26,7 @@ const HeaderContacts = ({ openMenu }: IHeaderContacts) => {
         <Button
           href="viber://chat?number=%2B375291233923"
           sx={contactButtonStyles}
-          startIcon={<Phone height={35} width={35} />}
+          startIcon={<Call height={35} width={35} />}
         >
           <div className={classes.contact}>
             <span>Напишите на Viber:</span>
@@ -36,7 +37,7 @@ const HeaderContacts = ({ openMenu }: IHeaderContacts) => {
           href="https://g.page/autonewart?share"
           target="_blank"
           sx={contactButtonStyles}
-          startIcon={<Phone height={35} width={35} />}
+          startIcon={<Call height={35} width={35} />}
         >
           <div className={classes.contact}>
             <span>Приезжайте к нам:</span>
@@ -45,8 +46,13 @@ const HeaderContacts = ({ openMenu }: IHeaderContacts) => {
         </Button>
         <Button
           sx={mobileButtonStyles}
-          startIcon={<Phone height={35} width={35} />}
+          startIcon={<Call height={35} width={35} />}
           onClick={() => openMenu("contacts")}
+        ></Button>
+        <Button
+          sx={mobileButtonStyles}
+          startIcon={<Chat height={35} width={35} />}
+          onClick={() => openMenu("callback")}
         ></Button>
       </div>
     </div>
