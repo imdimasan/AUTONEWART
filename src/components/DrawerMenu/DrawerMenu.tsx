@@ -25,6 +25,7 @@ import {
 const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
   const deviceWidth = typeof window !== "undefined" ? window.innerWidth : BRAKEPOINTS.MOBILE_MIN_PX;
   const deviceMobile = deviceWidth < BRAKEPOINTS.TABLET_MIN_PX;
+  const menuType = menuBody === "contacts" || menuBody === "callback";
 
   const inputInitialValues = {
     name: "",
@@ -42,15 +43,21 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
   };
 
   const handleSubmit = async () => {
-    await telegramNotification(inputValues);
-    await setInputValues(inputInitialValues);
-    setOpenMenu(false);
+    const response = await telegramNotification(inputValues);
+
+    if (response.ok) {
+      await setInputValues(inputInitialValues);
+      setOpenMenu(false);
+    } else {
+      console.log("Error");
+    }
   };
 
   return (
     <SwipeableDrawer
       anchor="bottom"
       open={openMenu}
+      hideBackdrop
       onClose={() => setOpenMenu(false)}
       onOpen={() => setOpenMenu(true)}
       disableSwipeToOpen
@@ -68,13 +75,7 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
         </div>
       )}
 
-      <div
-        className={
-          menuBody === "contacts" || menuBody === "callback"
-            ? classes.contactsMenu
-            : classes.drawerMenu
-        }
-      >
+      <div className={menuType ? classes.contactsMenu : classes.drawerMenu}>
         {menuBody === "tuning" && (
           <>
             {MENUS.EXHAUST_TUNING.map((menu, index) => (
@@ -82,7 +83,6 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
                 <Button
                   href={menu.url}
                   onClick={() => setOpenMenu(false)}
-                  variant="contained"
                   sx={drawerMenuButtonStyles}
                 >
                   <menu.icon width={60} height={60} />
@@ -99,7 +99,6 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
                 <Button
                   href={menu.url}
                   onClick={() => setOpenMenu(false)}
-                  variant="contained"
                   sx={drawerMenuButtonStyles}
                 >
                   <menu.icon width={60} height={60} />
@@ -116,7 +115,6 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
                 <Button
                   href={menu.url}
                   onClick={() => setOpenMenu(false)}
-                  variant="contained"
                   sx={drawerMenuButtonStyles}
                 >
                   <menu.icon width={60} height={60} />
@@ -133,7 +131,6 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
                 <Button
                   href={menu.url}
                   onClick={() => setOpenMenu(false)}
-                  variant="contained"
                   sx={drawerMenuButtonStyles}
                 >
                   <menu.icon width={60} height={60} />
@@ -150,7 +147,6 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
                 <Button
                   href={menu.url}
                   onClick={() => setOpenMenu(false)}
-                  variant="contained"
                   sx={drawerMenuButtonStyles}
                 >
                   <menu.icon width={60} height={60} />
@@ -167,7 +163,6 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
                 <Button
                   href={menu.url}
                   onClick={() => setOpenMenu(false)}
-                  variant="contained"
                   sx={drawerMenuButtonStyles}
                 >
                   <menu.icon width={60} height={60} />
@@ -179,11 +174,16 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
         )}
         {menuBody === "contacts" && (
           <>
+            <Calling
+              fill={COLOR.PRIMARY_RED}
+              width={80}
+              height={80}
+              style={{ marginBottom: "80px" }}
+            />
             <Button
               href="tel:+375291233923"
               fullWidth
               onClick={() => setOpenMenu(false)}
-              variant="contained"
               sx={drawerContactsButtonStyles}
             >
               <Calling width={30} height={30} />
@@ -193,7 +193,6 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
               href="viber://chat?number=%2B375291233923"
               fullWidth
               onClick={() => setOpenMenu(false)}
-              variant="contained"
               sx={drawerContactsButtonStyles}
             >
               <Viber width={30} height={30} />
@@ -203,7 +202,6 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
               href="https://g.page/autonewart?share"
               fullWidth
               onClick={() => setOpenMenu(false)}
-              variant="contained"
               sx={drawerContactsButtonStyles}
             >
               <GoogleMaps width={30} height={30} />
@@ -213,7 +211,6 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
               href="yandexnavi://build_route_on_map?lat_to=53.900358&lon_to=27.522665/"
               fullWidth
               onClick={() => setOpenMenu(false)}
-              variant="contained"
               sx={drawerContactsButtonStyles}
             >
               <YandexMaps width={30} height={30} />
@@ -227,7 +224,7 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
               fill={COLOR.PRIMARY_RED}
               width={80}
               height={80}
-              style={{ marginBottom: "20px" }}
+              style={{ marginBottom: "80px" }}
             />
             <TextField
               fullWidth
@@ -280,12 +277,7 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
                 sx: inputStyles,
               }}
             />
-            <Button
-              fullWidth
-              onClick={handleSubmit}
-              variant="contained"
-              sx={drawerFormButtonStyles}
-            >
+            <Button fullWidth onClick={handleSubmit} sx={drawerFormButtonStyles}>
               Отправить сообщение
             </Button>
           </>
