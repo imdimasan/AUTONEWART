@@ -13,7 +13,7 @@ export const drawerMenuButtonStyles = {
   padding: "10px",
   fontWeight: "400",
   lineHeight: "1",
-  width: "150px",
+  width: "100%",
   minHeight: "150px",
   height: "-webkit-fill-available",
   gap: "10px",
@@ -61,6 +61,23 @@ export const drawerContactsButtonStyles = {
     },
   },
 };
+export const drawerFormButtonStyles = {
+  background: COLOR.PRIMARY_RED,
+  border: "none",
+  color: COLOR.WHITE,
+  textTransform: "none",
+  textAlign: "center",
+  padding: "10px",
+  fontWeight: "400",
+  lineHeight: "1",
+  minHeight: "40px",
+  gap: "10px",
+  "&:hover": {
+    color: COLOR.WHITE,
+    background: COLOR.TRETIARY,
+    border: "none",
+  },
+};
 
 export const drawerPaperProps = {
   minHeight: deviceMobile ? "calc(100% - 70px)" : "calc(100% - 105px)",
@@ -69,8 +86,6 @@ export const drawerPaperProps = {
   background: COLOR.DARK_GRAY,
   color: COLOR.WHITE,
   gap: "10px",
-  borderTopLeftRadius: deviceMobile ? "18px" : "none",
-  borderTopRightRadius: deviceMobile ? "18px" : "none",
   "&::-webkit-scrollbar": {
     display: "none",
   },
@@ -86,7 +101,7 @@ export const inputLabelStyles = {
   },
   "&.MuiInputLabel-shrink": {
     color: COLOR.WHITE,
-    background: COLOR.LIGHT_GRAY,
+    background: COLOR.BLACK,
     borderRadius: "10px",
     lineHeight: "1",
     padding: "4px 12px",
@@ -101,6 +116,8 @@ export const inputStyles = {
     lineHeight: "1",
     padding: "9px 14px",
     borderColor: COLOR.WHITE_GRAY,
+    "-webkit-box-shadow": `inset 0 0 0 50px ${COLOR.LIGHT_GRAY}`,
+    "-webkit-text-fill-color": COLOR.WHITE,
   },
   "&.MuiOutlinedInput-root": {
     fieldset: {

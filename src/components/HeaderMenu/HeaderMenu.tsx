@@ -15,7 +15,6 @@ const HeaderMenu = ({ openMenu }: IHeaderMenu) => {
       <li>
         <Button
           onClick={() => openMenu("tuning")}
-          variant="contained"
           startIcon={<Tuning height={50} width={50} />}
           sx={menuButtonStyles}
         >
@@ -25,7 +24,6 @@ const HeaderMenu = ({ openMenu }: IHeaderMenu) => {
       <li>
         <Button
           onClick={() => openMenu("repair")}
-          variant="contained"
           startIcon={<Repair height={50} width={50} />}
           sx={menuButtonStyles}
         >
@@ -35,7 +33,6 @@ const HeaderMenu = ({ openMenu }: IHeaderMenu) => {
       <li>
         <Button
           onClick={() => openMenu("catalytic")}
-          variant="contained"
           startIcon={<Catalytic height={50} width={50} />}
           sx={menuButtonStyles}
         >
@@ -45,7 +42,6 @@ const HeaderMenu = ({ openMenu }: IHeaderMenu) => {
       <li>
         <Button
           onClick={() => openMenu("dpf")}
-          variant="contained"
           startIcon={<Dpf height={50} width={50} />}
           sx={menuButtonStyles}
         >
@@ -55,7 +51,6 @@ const HeaderMenu = ({ openMenu }: IHeaderMenu) => {
       <li>
         <Button
           onClick={() => openMenu("service")}
-          variant="contained"
           startIcon={<Service height={50} width={50} />}
           sx={menuButtonStyles}
         >
@@ -65,7 +60,6 @@ const HeaderMenu = ({ openMenu }: IHeaderMenu) => {
       <li>
         <Button
           onClick={() => openMenu("repairing")}
-          variant="contained"
           startIcon={<Repairing height={50} width={50} />}
           sx={menuButtonStyles}
         >
