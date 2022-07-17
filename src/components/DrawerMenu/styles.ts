@@ -31,7 +31,7 @@ export const drawerMenuButtonStyles = {
   aspectRatio: "1 / 1",
   gap: "10px",
   svg: {
-    fill: COLOR.TRETIARY,
+    fill: COLOR.PRIMARY_RED,
     transition: "250ms",
   },
   "& .MuiButton-startIcon": {
@@ -39,10 +39,10 @@ export const drawerMenuButtonStyles = {
   },
   "&:hover": {
     color: COLOR.WHITE,
-    background: COLOR.TRETIARY,
+    background: COLOR.PRIMARY_RED,
     border: "none",
     svg: {
-      fill: COLOR.PRIMARY,
+      fill: COLOR.BLACK,
     },
   },
 };
@@ -59,7 +59,7 @@ export const drawerContactsButtonStyles = {
   minHeight: "50px",
   gap: "10px",
   svg: {
-    fill: COLOR.TRETIARY,
+    fill: COLOR.PRIMARY_RED,
     transition: "250ms",
   },
   "& .MuiButton-startIcon": {
@@ -67,10 +67,10 @@ export const drawerContactsButtonStyles = {
   },
   "&:hover": {
     color: COLOR.WHITE,
-    background: COLOR.TRETIARY,
+    background: COLOR.PRIMARY_RED,
     border: "none",
     svg: {
-      fill: COLOR.PRIMARY,
+      fill: COLOR.BLACK,
     },
   },
 };

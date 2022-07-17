@@ -55,7 +55,7 @@ export const formButtonStyles = {
   gap: "10px",
   "&:hover": {
     color: COLOR.WHITE,
-    background: COLOR.TRETIARY,
+    background: COLOR.PRIMARY_RED,
     border: "none",
   },
   "&:disabled": {
