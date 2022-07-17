@@ -34,9 +34,12 @@ Project uses **eslint & stylelint** prettiers. For working properly VSCode shoul
 ## Enviroment Variables
 Project uses **ENV variables*. Add necessary ENV after cloning:
 ```
-REACT_APP_API_LIVESITE = Any site name
-REACT_APP_API_LOGO = http://site.name/logo.png
-REACT_APP_API_URL = http://site.name
+NEXT_PUBLIC_LIVESITE = Site Name
+NEXT_PUBLIC_LOGO = https://site.com/logo.png
+NEXT_PUBLIC_URL = https://site.com
+NEXT_PUBLIC_TELEGRAM_TOKEN = 1195246232:Afgt43jjngfdug438jkdfs9PsyL8x0Jc
+NEXT_PUBLIC_TELEGRAM_CHATID = -012345678
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
