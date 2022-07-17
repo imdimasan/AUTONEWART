@@ -31,6 +31,14 @@ Project uses **eslint & stylelint** prettiers. For working properly VSCode shoul
 }
 ```
 
+Make sure your VSCode has required extensions:
+
+* [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+* [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
+* [Auto Import](https://marketplace.visualstudio.com/items?itemName=steoates.autoimport)
+* [Prettier - Code formatter
+](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
 ## Enviroment Variables
 Project uses **ENV variables*. Add necessary ENV after cloning:
 ```
