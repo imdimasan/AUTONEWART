@@ -1,63 +1,28 @@
-import { Button, IconButton, SwipeableDrawer, TextField } from "@mui/material";
+import { Button, IconButton, SwipeableDrawer } from "@mui/material";
 import GoogleMaps from "assets/icons-colored/google-maps.svg";
 import Viber from "assets/icons-colored/viber.svg";
 import YandexMaps from "assets/icons-colored/yandex-maps.svg";
 import Close from "assets/icons/close.svg";
 import Calling from "assets/icons/smartphone-calling-icon.svg";
 import Chat from "assets/icons/smartphone-chat.svg";
+import CallbackForm from "components/CallbackForm";
 import { BRAKEPOINTS } from "constants/brakepoints";
 import { COLOR } from "constants/colors";
 import { MENUS } from "constants/menus";
 import Link from "next/link";
-import { useState } from "react";
-import { telegramNotification } from "utils/telegram";
 import classes from "./DrawerMenu.module.scss";
 import { IDrawerMenu } from "./interfaces";
-import {
-  drawerContactsButtonStyles,
-  drawerFormButtonStyles,
-  drawerMenuButtonStyles,
-  drawerPaperProps,
-  inputLabelStyles,
-  inputStyles,
-} from "./styles";
+import { drawerContactsButtonStyles, drawerMenuButtonStyles, drawerPaperProps } from "./styles";
 
 const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
   const deviceWidth = typeof window !== "undefined" ? window.innerWidth : BRAKEPOINTS.MOBILE_MIN_PX;
   const deviceMobile = deviceWidth < BRAKEPOINTS.TABLET_MIN_PX;
   const menuType = menuBody === "contacts" || menuBody === "callback";
 
-  const inputInitialValues = {
-    name: "",
-    phone: "",
-    message: "",
-  };
-
-  const [inputValues, setInputValues] = useState(inputInitialValues);
-
-  const changeValues = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setInputValues({
-      ...inputValues,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const handleSubmit = async () => {
-    const response = await telegramNotification(inputValues);
-
-    if (response.ok) {
-      await setInputValues(inputInitialValues);
-      setOpenMenu(false);
-    } else {
-      console.log("Error");
-    }
-  };
-
   return (
     <SwipeableDrawer
       anchor="bottom"
       open={openMenu}
-      hideBackdrop
       onClose={() => setOpenMenu(false)}
       onOpen={() => setOpenMenu(true)}
       disableSwipeToOpen
@@ -178,7 +143,7 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
               fill={COLOR.PRIMARY_RED}
               width={80}
               height={80}
-              style={{ marginBottom: "80px" }}
+              style={{ marginBottom: "60px" }}
             />
             <Button
               href="tel:+375291233923"
@@ -224,62 +189,9 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
               fill={COLOR.PRIMARY_RED}
               width={80}
               height={80}
-              style={{ marginBottom: "80px" }}
+              style={{ marginBottom: "60px" }}
             />
-            <TextField
-              fullWidth
-              label="Ваше имя"
-              name="name"
-              value={inputValues.name}
-              onChange={changeValues}
-              sx={{
-                marginBottom: "5px",
-              }}
-              InputLabelProps={{
-                sx: inputLabelStyles,
-              }}
-              InputProps={{
-                sx: inputStyles,
-              }}
-            />
-            <TextField
-              fullWidth
-              label="Номер телефона"
-              name="phone"
-              value={inputValues.phone}
-              onChange={changeValues}
-              sx={{
-                marginBottom: "5px",
-              }}
-              InputLabelProps={{
-                sx: inputLabelStyles,
-              }}
-              InputProps={{
-                sx: inputStyles,
-              }}
-            />
-            <TextField
-              fullWidth
-              label="Сообщение"
-              multiline
-              name="message"
-              minRows={4}
-              maxRows={4}
-              value={inputValues.message}
-              onChange={changeValues}
-              sx={{
-                marginBottom: "5px",
-              }}
-              InputLabelProps={{
-                sx: inputLabelStyles,
-              }}
-              InputProps={{
-                sx: inputStyles,
-              }}
-            />
-            <Button fullWidth onClick={handleSubmit} sx={drawerFormButtonStyles}>
-              Отправить сообщение
-            </Button>
+            <CallbackForm setOpenMenu={setOpenMenu} />
           </>
         )}
       </div>

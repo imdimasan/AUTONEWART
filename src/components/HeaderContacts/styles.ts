@@ -12,7 +12,7 @@ export const mobileButtonStyles = {
   color: COLOR.WHITE,
   fontWeight: "400",
   minWidth: "0",
-  padding: "6px 6px 6px 0",
+  padding: "5px",
   display: { xs: "inline-flex", md: "none" },
   svg: {
     fill: COLOR.PRIMARY_RED,
