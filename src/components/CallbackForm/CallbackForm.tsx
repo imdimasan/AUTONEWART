@@ -72,6 +72,7 @@ const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
             label="Номер телефона"
             name="phone"
             value={inputValues.phone}
+            inputMode="tel"
             onChange={changeValues}
             sx={{
               marginBottom: "5px",
