@@ -24,7 +24,7 @@ const HeaderContacts = ({ openMenu }: IHeaderContacts) => {
           </div>
         </Button>
         <Button
-          href="viber://chat?number=%2B375291233923"
+          href="viber://chat?number=%2B375295233922"
           sx={contactButtonStyles}
           startIcon={<Call height={35} width={35} />}
         >

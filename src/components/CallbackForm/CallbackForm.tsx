@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import lottie from "lottie-web";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { telegramNotification } from "utils/telegram";
 import { ICallbackForm } from "./interfaces";
 import { formButtonStyles, inputLabelStyles, inputStyles } from "./styles";
@@ -14,7 +14,15 @@ const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
 
   const [inputValues, setInputValues] = useState(inputInitialValues);
   const [messageSent, setMessageSent] = useState(false);
-  const lottieRef = useRef(null);
+  const lottieRef = useRef<HTMLDivElement>(null);
+
+  const sentMessageAnimation = lottie.loadAnimation({
+    container: lottieRef.current as HTMLDivElement,
+    renderer: "svg",
+    loop: false,
+    autoplay: true,
+    animationData: require("assets/lottie/message-sent.json"),
+  });
 
   const changeValues = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setInputValues({
@@ -25,27 +33,25 @@ const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
 
   const handleSubmit = async () => {
     const response = await telegramNotification(inputValues);
-
     if (response.ok) {
-      setInputValues(inputInitialValues);
       setMessageSent(true);
-      if (lottieRef.current) {
-        const animation = lottie.loadAnimation({
-          container: lottieRef.current,
-          renderer: "svg",
-          loop: false,
-          autoplay: true,
-          animationData: require("assets/lottie/message-sent.json"),
-        });
-        animation.addEventListener("complete", () => {
-          setOpenMenu(false);
-        });
-        animation.play();
-      }
     } else {
       console.log("Error");
     }
   };
+
+  useEffect(() => {
+    if (lottieRef.current && messageSent) {
+      sentMessageAnimation.addEventListener("complete", () => {
+        setOpenMenu(false);
+      });
+      sentMessageAnimation.play();
+    }
+
+    return () => {
+      sentMessageAnimation.removeEventListener("complete");
+    };
+  }, [messageSent]);
 
   return (
     <>
