@@ -48,11 +48,13 @@ const HeaderContacts = ({ openMenu }: IHeaderContacts) => {
           sx={mobileButtonStyles}
           startIcon={<Call height={35} width={35} />}
           onClick={() => openMenu("contacts")}
+          aria-label="Contacts"
         ></Button>
         <Button
           sx={mobileButtonStyles}
           startIcon={<Chat height={35} width={35} />}
           onClick={() => openMenu("callback")}
+          aria-label="Call Back"
         ></Button>
       </div>
     </div>

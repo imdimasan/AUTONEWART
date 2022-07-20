@@ -15,7 +15,10 @@ import Place from "assets/icons/place.svg";
 import Phone from "assets/icons/smartphone-call.svg";
 import Vcard from "assets/icons/vcard.svg";
 import { COLOR } from "constants/colors";
+import Image from "next/image";
+import Link from "next/link";
 import { version } from "../../../package.json";
+import starlinkLogo from "../../../public/starlink-webstudio-graylogo.png";
 import classes from "./Footer.module.scss";
 import { listItemButtonStyles, listItemIconStyles, listItemStyles } from "./styles";
 
@@ -24,7 +27,7 @@ const Footer = () => {
     <footer className={classes.wrapper}>
       <div className={classes.content}>
         <div className={classes.item}>
-          <h4>Режим работы & Адрес</h4>
+          <span className={classes.heading}>Режим работы & Адрес</span>
           <List>
             <ListItem>
               <ListItemButton
@@ -79,37 +82,53 @@ const Footer = () => {
           </List>
         </div>
         <div className={classes.item}>
-          <h4>Подписывайтесь на нас</h4>
+          <span className={classes.heading}>Подписывайтесь на нас</span>
           <ButtonGroup variant="text">
-            <IconButton href="https://www.instagram.com/autonewart_" target="_blank">
+            <IconButton
+              href="https://www.instagram.com/autonewart_"
+              target="_blank"
+              title="AutoNewArt Instagram"
+            >
               <Instagram width={35} height={35} />
             </IconButton>
-            <IconButton href="https://www.facebook.com/autonewartcom" target="_blank">
+            <IconButton
+              href="https://www.facebook.com/autonewartcom"
+              target="_blank"
+              title="AutoNewArt Facebook"
+            >
               <Facebook width={35} height={35} />
             </IconButton>
             <IconButton
               href="https://www.youtube.com/channel/UC3PqSXHKJd_HCPvGZUzw0ig"
               target="_blank"
+              title="AutoNewArt YouTube"
             >
               <Youtube width={35} height={35} />
             </IconButton>
           </ButtonGroup>
         </div>
         <div className={classes.item}>
-          <h4>О нас говорят</h4>
+          <span className={classes.heading}>О нас говорят</span>
         </div>
       </div>
       <div className={classes.copyrights}>
         <p className={classes.copyright}>©2022 AutoNewArt</p>
         <p className={classes.version}>v. {version}</p>
         <p className={classes.str}>
-          <a href="https://starlink.by/" target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://starlink.by/starlink-webstudio-graylogo.png"
-              width="100"
-              height="38"
-            />
-          </a>
+          <Link href={"https://starlink.by/"} target="_blank" rel="noopener noreferrer">
+            <a>
+              <Image
+                src={starlinkLogo}
+                layout="fixed"
+                width={100}
+                height={38}
+                priority
+                placeholder="blur"
+                alt="StarLink Web-Studio разработка сайта на NextJS"
+                title="StarLink Web-Studio"
+              />
+            </a>
+          </Link>
         </p>
       </div>
     </footer>

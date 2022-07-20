@@ -59,7 +59,7 @@ export const formButtonStyles = {
     border: "none",
   },
   "&:disabled": {
-    background: COLOR.LIGHT_GRAY,
-    color: COLOR.DARK_GRAY,
+    background: COLOR.BLACK,
+    color: COLOR.WHITE_GRAY,
   },
 };

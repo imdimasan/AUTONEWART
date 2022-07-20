@@ -4,7 +4,6 @@ import Viber from "assets/icons-colored/viber.svg";
 import YandexMaps from "assets/icons-colored/yandex-maps.svg";
 import Close from "assets/icons/close.svg";
 import Calling from "assets/icons/smartphone-calling-icon.svg";
-import Chat from "assets/icons/smartphone-chat.svg";
 import CallbackForm from "components/CallbackForm";
 import { BRAKEPOINTS } from "constants/brakepoints";
 import { COLOR } from "constants/colors";
@@ -139,12 +138,7 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
         )}
         {menuBody === "contacts" && (
           <>
-            <Calling
-              fill={COLOR.PRIMARY_RED}
-              width={80}
-              height={80}
-              style={{ marginBottom: "60px" }}
-            />
+            <span className={classes.drawerTitle}>Свяжитесь с нами!</span>
             <Button
               href="tel:+375291233923"
               fullWidth
@@ -185,12 +179,7 @@ const DrawerMenu = ({ openMenu, setOpenMenu, menuBody }: IDrawerMenu) => {
         )}
         {menuBody === "callback" && (
           <>
-            <Chat
-              fill={COLOR.PRIMARY_RED}
-              width={80}
-              height={80}
-              style={{ marginBottom: "60px" }}
-            />
+            <span className={classes.drawerTitle}>Мы перезвоним!</span>
             <CallbackForm setOpenMenu={setOpenMenu} />
           </>
         )}

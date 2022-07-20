@@ -1,57 +1,50 @@
 import { Button, TextField } from "@mui/material";
 import lottie from "lottie-web";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { telegramNotification } from "utils/telegram";
 import { ICallbackForm } from "./interfaces";
 import { formButtonStyles, inputLabelStyles, inputStyles } from "./styles";
 
 const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
-  const inputInitialValues = {
+  const initialValues = {
     name: "",
     phone: "",
     message: "",
   };
 
-  const [inputValues, setInputValues] = useState(inputInitialValues);
+  const [values, setValues] = useState(initialValues);
   const [messageSent, setMessageSent] = useState(false);
   const lottieRef = useRef<HTMLDivElement>(null);
 
-  const sentMessageAnimation = lottie.loadAnimation({
-    container: lottieRef.current as HTMLDivElement,
-    renderer: "svg",
-    loop: false,
-    autoplay: true,
-    animationData: require("assets/lottie/message-sent.json"),
-  });
-
   const changeValues = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setInputValues({
-      ...inputValues,
+    setValues({
+      ...values,
       [event.target.name]: event.target.value,
     });
   };
 
   const handleSubmit = async () => {
-    const response = await telegramNotification(inputValues);
+    const response = await telegramNotification(values);
     if (response.ok) {
       setMessageSent(true);
+      if (lottieRef.current) {
+        const lottieAnimation = lottie.loadAnimation({
+          container: lottieRef.current,
+          renderer: "svg",
+          loop: false,
+          autoplay: false,
+          animationData: require("assets/lottie/message-sent.json"),
+        });
+        lottieAnimation.addEventListener("complete", () => {
+          lottieAnimation.removeEventListener("complete");
+          setOpenMenu(false);
+        });
+        lottieAnimation.play();
+      }
     } else {
       console.log("Error");
     }
   };
-
-  useEffect(() => {
-    if (lottieRef.current && messageSent) {
-      sentMessageAnimation.addEventListener("complete", () => {
-        setOpenMenu(false);
-      });
-      sentMessageAnimation.play();
-    }
-
-    return () => {
-      sentMessageAnimation.removeEventListener("complete");
-    };
-  }, [messageSent]);
 
   return (
     <>
@@ -61,7 +54,7 @@ const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
             fullWidth
             label="Ваше имя"
             name="name"
-            value={inputValues.name}
+            value={values.name}
             onChange={changeValues}
             sx={{
               marginBottom: "5px",
@@ -77,7 +70,7 @@ const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
             fullWidth
             label="Номер телефона"
             name="phone"
-            value={inputValues.phone}
+            value={values.phone}
             inputMode="numeric"
             onChange={changeValues}
             sx={{
@@ -97,7 +90,7 @@ const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
             name="message"
             minRows={2}
             maxRows={2}
-            value={inputValues.message}
+            value={values.message}
             onChange={changeValues}
             sx={{
               marginBottom: "5px",
@@ -113,13 +106,12 @@ const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
             fullWidth
             onClick={handleSubmit}
             sx={formButtonStyles}
-            disabled={!inputValues.name && !inputValues.phone}
+            disabled={!values.name && !values.phone}
           >
             Отправить сообщение
           </Button>
         </>
       )}
-
       <div ref={lottieRef}></div>
     </>
   );

@@ -14,6 +14,8 @@ const Logo = () => {
           priority
           placeholder="blur"
           className="HeaderLogo"
+          alt="AutoNewArt автомобильные выхлопные системы"
+          title="AutoNewArt"
         />
       </a>
     </Link>

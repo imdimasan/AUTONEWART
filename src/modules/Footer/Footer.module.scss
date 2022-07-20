@@ -11,13 +11,6 @@
   color: $whiteGray;
   background: $black;
 
-  h4 {
-    padding-bottom: 10px;
-    font-weight: 400;
-    font-size: 16px;
-    border-bottom: 1px solid $white;
-  }
-
   .content {
     display: flex;
     gap: 5%;
@@ -36,6 +29,13 @@
     gap: 10px;
     align-items: center;
     min-width: 20%;
+
+    .heading {
+      padding-bottom: 10px;
+      font-weight: 400;
+      font-size: 16px;
+      border-bottom: 1px solid $white;
+    }
   }
 
   .copyrights {
