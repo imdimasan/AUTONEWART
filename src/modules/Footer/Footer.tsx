@@ -18,6 +18,7 @@ import { COLOR } from "constants/colors";
 import SliderReviews from "modules/SliderReviews";
 import Image from "next/image";
 import Link from "next/link";
+import packageInfo from "../../../package.json";
 import starlinkLogo from "../../../public/starlink-webstudio-graylogo.png";
 import classes from "./Footer.module.scss";
 import { reviews } from "./reviews";
@@ -115,7 +116,7 @@ const Footer = () => {
       </div>
       <div className={classes.copyrights}>
         <p className={classes.copyright}>©2022 AutoNewArt</p>
-        <p className={classes.version}>v. {process.env.NEXT_PUBLIC_APP_VERSION}</p>
+        <p className={classes.version}>v. {packageInfo.version}</p>
         <p className={classes.str}>
           <Link href={"https://starlink.by/"} target="_blank" rel="noopener noreferrer">
             <a>
