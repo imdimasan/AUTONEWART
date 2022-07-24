@@ -1,1 +1,132 @@
+@import "styles/colors.scss";
+@import "styles/media.scss";
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 40px calc(50% - 590px);
+  color: white;
+  background: radial-gradient(at top center, #000 15%, #363434 100%);
+  @include tablet {
+    padding: 30px calc(50% - 360px);
+  }
+  @include mobile {
+    padding: 30px 10px;
+  }
+
+  .block {
+    display: grid;
+    grid-template-areas:
+      "heading image"
+      "content image";
+    grid-template-columns: 50% 50%;
+    gap: 20px 60px;
+    margin: 40px 0 0;
+    padding-bottom: 40px;
+    border-bottom: 1px solid $darkGray;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &.reverse {
+      grid-template-areas:
+        "image heading"
+        "image content";
+      @include mobile {
+        grid-template-areas:
+          "heading"
+          "image"
+          "content";
+        grid-template-columns: 100%;
+        margin: 20px 0;
+      }
+    }
+
+    @include mobile {
+      grid-template-areas:
+        "heading"
+        "image"
+        "content";
+      grid-template-columns: 100%;
+      margin: 20px 0;
+    }
+
+    .heading {
+      display: flex;
+      flex-direction: column;
+      grid-area: heading;
+      align-items: flex-start;
+      justify-content: center;
+      margin-bottom: 20px;
+      @include mobile {
+        align-items: center;
+      }
+
+      h1,
+      span {
+        margin: 0;
+        color: $white;
+        font-weight: 400;
+        font-size: 25px;
+        text-transform: uppercase;
+        @include tablet {
+          font-size: 20px;
+        }
+      }
+
+      h2 {
+        margin: 0;
+        color: $primaryRed;
+        font-weight: 400;
+        font-size: 45px;
+        @include tablet {
+          font-size: 30px;
+        }
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      grid-area: content;
+
+      ul {
+        margin-bottom: 40px;
+        padding-left: 25px;
+      }
+
+      li {
+        position: relative;
+        margin-bottom: 5px;
+        font-weight: 300;
+        font-size: 20px;
+        list-style: none;
+        @include tablet {
+          font-size: 15px;
+        }
+
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: -25px;
+          width: 15px;
+          height: 15px;
+          background-color: $primaryRed;
+          transform: translateY(-50%);
+          content: "";
+          mask: url("/icons/arrow-right.svg") no-repeat 50% 50%;
+        }
+      }
+      @include mobile {
+        justify-content: center;
+      }
+    }
+
+    .image {
+      display: block;
+      grid-area: image;
+    }
+  }
+}
