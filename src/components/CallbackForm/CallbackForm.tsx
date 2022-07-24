@@ -6,41 +6,40 @@ import { ICallbackForm } from "./interfaces";
 import { formButtonStyles, inputLabelStyles, inputStyles } from "./styles";
 
 const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
-  const inputInitialValues = {
+  const initialValues = {
     name: "",
     phone: "",
     message: "",
   };
 
-  const [inputValues, setInputValues] = useState(inputInitialValues);
+  const [values, setValues] = useState(initialValues);
   const [messageSent, setMessageSent] = useState(false);
-  const lottieRef = useRef(null);
+  const lottieRef = useRef<HTMLDivElement>(null);
 
   const changeValues = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setInputValues({
-      ...inputValues,
+    setValues({
+      ...values,
       [event.target.name]: event.target.value,
     });
   };
 
   const handleSubmit = async () => {
-    const response = await telegramNotification(inputValues);
-
+    const response = await telegramNotification(values);
     if (response.ok) {
-      setInputValues(inputInitialValues);
       setMessageSent(true);
       if (lottieRef.current) {
-        const animation = lottie.loadAnimation({
+        const lottieAnimation = lottie.loadAnimation({
           container: lottieRef.current,
           renderer: "svg",
           loop: false,
-          autoplay: true,
+          autoplay: false,
           animationData: require("assets/lottie/message-sent.json"),
         });
-        animation.addEventListener("complete", () => {
+        lottieAnimation.addEventListener("complete", () => {
+          lottieAnimation.removeEventListener("complete");
           setOpenMenu(false);
         });
-        animation.play();
+        lottieAnimation.play();
       }
     } else {
       console.log("Error");
@@ -55,7 +54,7 @@ const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
             fullWidth
             label="Ваше имя"
             name="name"
-            value={inputValues.name}
+            value={values.name}
             onChange={changeValues}
             sx={{
               marginBottom: "5px",
@@ -71,7 +70,7 @@ const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
             fullWidth
             label="Номер телефона"
             name="phone"
-            value={inputValues.phone}
+            value={values.phone}
             inputMode="numeric"
             onChange={changeValues}
             sx={{
@@ -91,7 +90,7 @@ const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
             name="message"
             minRows={2}
             maxRows={2}
-            value={inputValues.message}
+            value={values.message}
             onChange={changeValues}
             sx={{
               marginBottom: "5px",
@@ -107,13 +106,12 @@ const CallbackForm = ({ setOpenMenu }: ICallbackForm) => {
             fullWidth
             onClick={handleSubmit}
             sx={formButtonStyles}
-            disabled={!inputValues.name && !inputValues.phone}
+            disabled={!values.name && !values.phone}
           >
             Отправить сообщение
           </Button>
         </>
       )}
-
       <div ref={lottieRef}></div>
     </>
   );

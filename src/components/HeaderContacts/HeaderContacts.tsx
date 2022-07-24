@@ -24,7 +24,7 @@ const HeaderContacts = ({ openMenu }: IHeaderContacts) => {
           </div>
         </Button>
         <Button
-          href="viber://chat?number=%2B375291233923"
+          href="viber://chat?number=%2B375295233922"
           sx={contactButtonStyles}
           startIcon={<Call height={35} width={35} />}
         >
@@ -48,11 +48,13 @@ const HeaderContacts = ({ openMenu }: IHeaderContacts) => {
           sx={mobileButtonStyles}
           startIcon={<Call height={35} width={35} />}
           onClick={() => openMenu("contacts")}
+          aria-label="Contacts"
         ></Button>
         <Button
           sx={mobileButtonStyles}
           startIcon={<Chat height={35} width={35} />}
           onClick={() => openMenu("callback")}
+          aria-label="Call Back"
         ></Button>
       </div>
     </div>

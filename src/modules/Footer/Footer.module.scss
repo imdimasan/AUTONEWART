@@ -1,3 +1,98 @@
+@import "styles/colors.scss";
+@import "styles/media.scss";
+
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
   margin-top: auto;
+  padding: 20px 10px;
+  color: $whiteGray;
+  background: $black;
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+    justify-content: center;
+    width: 80%;
+    @include tablet {
+      width: 90%;
+    }
+    @include mobile {
+      flex-direction: column;
+      gap: 40px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    min-width: 30%;
+    max-width: 30%;
+    @include tablet {
+      width: calc(50% - 20px);
+      max-width: 50%;
+    }
+    @include mobile {
+      width: auto;
+      max-width: none;
+    }
+
+    .heading {
+      padding-bottom: 10px;
+      font-weight: 400;
+      font-size: 16px;
+      border-bottom: 1px solid $white;
+    }
+
+    &:last-child {
+      @include tablet {
+        width: 90%;
+        max-width: 90%;
+      }
+      @include mobile {
+        width: 100%;
+        max-width: none;
+      }
+    }
+  }
+
+  .copyrights {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0;
+    background: $darkGray;
+    @include mobile {
+      align-items: flex-start;
+      padding-left: 3%;
+    }
+  }
+
+  .copyright {
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 12px;
+    @include mobile {
+      margin-bottom: 5px;
+    }
+  }
+
+  .version {
+    font-size: 12px;
+  }
+
+  .str {
+    position: absolute;
+    right: 3%;
+    bottom: 50%;
+    transform: translateY(50%);
+  }
 }

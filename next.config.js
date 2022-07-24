@@ -1,4 +1,8 @@
 module.exports = {
+  i18n: {
+    locales: ["ru"],
+    defaultLocale: "ru",
+  },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test(".svg"));
     fileLoaderRule.exclude = /\.svg$/;
