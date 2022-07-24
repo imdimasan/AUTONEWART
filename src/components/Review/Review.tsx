@@ -13,6 +13,7 @@ const Review = ({ name, rating, from, avatar, review }: IReviews) => (
         layout="fixed"
         width={40}
         height={40}
+        placeholder="blur"
       />
       <div className={classes.overall}>
         <span className={classes.name}>{name}</span>
