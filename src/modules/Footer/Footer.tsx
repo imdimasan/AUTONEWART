@@ -15,11 +15,12 @@ import Place from "assets/icons/place.svg";
 import Phone from "assets/icons/smartphone-call.svg";
 import Vcard from "assets/icons/vcard.svg";
 import { COLOR } from "constants/colors";
+import SliderReviews from "modules/SliderReviews";
 import Image from "next/image";
 import Link from "next/link";
-import { version } from "../../../package.json";
 import starlinkLogo from "../../../public/starlink-webstudio-graylogo.png";
 import classes from "./Footer.module.scss";
+import { reviews } from "./reviews";
 import { listItemButtonStyles, listItemIconStyles, listItemStyles } from "./styles";
 
 const Footer = () => {
@@ -109,11 +110,12 @@ const Footer = () => {
         </div>
         <div className={classes.item}>
           <span className={classes.heading}>О нас говорят</span>
+          <SliderReviews slides={reviews} />
         </div>
       </div>
       <div className={classes.copyrights}>
         <p className={classes.copyright}>©2022 AutoNewArt</p>
-        <p className={classes.version}>v. {version}</p>
+        <p className={classes.version}>v. {process.env.NEXT_PUBLIC_APP_VERSION}</p>
         <p className={classes.str}>
           <Link href={"https://starlink.by/"} target="_blank" rel="noopener noreferrer">
             <a>

@@ -1,0 +1,14 @@
+@import "styles/media.scss";
+@import "styles/colors.scss";
+
+.slider {
+  width: 100%;
+
+  .slide {
+    height: auto;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background-color: $primaryRed;
+  }
+}
