@@ -4,6 +4,9 @@ import { HeadMeta } from "components";
 import { COLOR } from "constants/colors";
 import { NextPage } from "next";
 import Image from "next/image";
+import { ElfsightWidget } from "react-elfsight-widget";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import Buzzer from "../../public/images/buzzer.png";
 import EuroCatalyst from "../../public/images/euro-5-catalyst.png";
 import Magnaflow from "../../public/images/magnaflow.png";
@@ -24,9 +27,9 @@ const HomePage: NextPage = () => {
   return (
     <>
       <HeadMeta
-        title="Home Page"
-        description="App starts from this page"
-        keywords="home, homepage"
+        title="AutoNewArt - Автомастерская по ремонту и тюнингу выхлопных систем"
+        description="AutoNewArt - Авто мастерская. Ремонт, тюнинг и изготовление выхлопных систем в Минске. Ремонт и ТО автомобилей. Удаление катализаторов и сажевых фильтров."
+        keywords="autonewart, автоньюарт"
         url=""
       />
       <section className={classes.wrapper}>
@@ -59,6 +62,7 @@ const HomePage: NextPage = () => {
               height={420}
               alt="Глушители Magnaflow"
               layout="responsive"
+              priority
             />
           </div>
         </div>
@@ -160,6 +164,56 @@ const HomePage: NextPage = () => {
               layout="responsive"
             />
           </div>
+        </div>
+
+        <div className={classes.youtube}>
+          <LiteYouTubeEmbed
+            id="j5s8v7u1ss0"
+            title="Электронная система Thor"
+            playerClass={classes.buttonPlay}
+            activatedClass={classes.activatedPlay}
+          />
+          <LiteYouTubeEmbed
+            id="HPSJpF3q4Og"
+            title="Электронная система Thor"
+            playerClass={classes.buttonPlay}
+            activatedClass={classes.activatedPlay}
+          />
+          <LiteYouTubeEmbed
+            id="N9-H7H8LM6Q"
+            title="Электронная система Thor"
+            playerClass={classes.buttonPlay}
+            activatedClass={classes.activatedPlay}
+            wrapperClass={classes.video}
+          />
+        </div>
+
+        <div className={classes.instagram}>
+          <div className={classes.heading}>
+            <span>Наши работы в</span>
+            <span>INSTAGRAM</span>
+          </div>
+          <ElfsightWidget widgetID="3ed272a2-818b-4254-bd57-783e77b892af" />
+        </div>
+
+        <div className={classes.text}>
+          <h3>AutoNewArt занимает ремонтом и тюнингом выхлопных систем уже более 12 лет.</h3>
+          <p>
+            Благодаря высококвалифицированным мастерам, использованию качественных материалов,
+            позитивному отношению к жизни и постоянному стремлению к совершенству, AutoNewArt решит
+            любую задачу, и Ваш автомобиль «покажет свой характер». При тюнинге и ремонте выхлопных
+            систем мы всегда добиваемся высоких результатов! AutoNewArt — команда специалистов,
+            которые успешно решают нестандартные ситуации и реализуют самые смелые идеи клиентов.
+          </p>
+          <p>
+            Наш опыт постоянно пополняется новыми решениями, что позволяет быть в тренде, в тренде
+            эмоций и комфорта. Изменить характер вашего автомобиля? Без проблем!Чем мы занимаемся?
+            Мы занимаемся диагностикой, ремонтом выхлопных систем любой сложности, заменой
+            компонентов выхлопной системы, тюнингом, изготовлением выхлопных систем с применением
+            аргонно-дуговой сварки. Кого мы будем рады видеть в качестве клиентов? Мы будем рады
+            видеть всех, кто стремится к индивидуальности , кто жаждет изменить звук своего авто,
+            всех, кто разыскивает качественный ремонт выхлопной системы.
+          </p>
         </div>
       </section>
     </>
